@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "model": "k2-fsa/OmniVoice",
+  "model_revision": "c5fdb5ccb189668d56333f77ba2629f4cd7535f4",
+  "sdk_revision": "08be0b4ccbac3e13e374e86fbfead4b4cac343e2",
+  "model_license": "Apache-2.0",
+  "codec_license": "Boson Higgs Audio 2 Community License",
+  "artifacts": [
+    {
+      "path": "model/README.md",
+      "bytes": 9424,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/README.md",
+      "git_blob_sha1": "d34ff79ef4f3c48658aa47044df30a88607ee304"
+    },
+    {
+      "path": "model/audio_tokenizer/LICENSE",
+      "bytes": 9171,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/audio_tokenizer/LICENSE",
+      "git_blob_sha1": "000139f87ffdc03106fc422a3bd3cebebb9808b3"
+    },
+    {
+      "path": "model/audio_tokenizer/README.md",
+      "bytes": 5174,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/audio_tokenizer/README.md",
+      "git_blob_sha1": "bc5f30d6632ac0efdc7be2e9095e9e9579af2e33"
+    },
+    {
+      "path": "model/audio_tokenizer/config.json",
+      "bytes": 2531,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/audio_tokenizer/config.json",
+      "git_blob_sha1": "3f9e5ee43d2134dfdc1e38055fbcb24a18af1635"
+    },
+    {
+      "path": "model/audio_tokenizer/model.safetensors",
+      "bytes": 805665628,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/audio_tokenizer/model.safetensors",
+      "sha256": "fe7c5e8785e0a05833e1bfc3e002ec7f55af21e306b2e7154a448c1f54ccfb0d"
+    },
+    {
+      "path": "model/audio_tokenizer/preprocessor_config.json",
+      "bytes": 206,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/audio_tokenizer/preprocessor_config.json",
+      "git_blob_sha1": "aa7431e986f9e13157c60e04be8f52501b718254"
+    },
+    {
+      "path": "model/chat_template.jinja",
+      "bytes": 4168,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/chat_template.jinja",
+      "git_blob_sha1": "01be9b307daa2d425f7c168c9fb145a286e0afb4"
+    },
+    {
+      "path": "model/config.json",
+      "bytes": 2238,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/config.json",
+      "git_blob_sha1": "dd518e816a5c4c8eba90820bb7efa49ceafbe223"
+    },
+    {
+      "path": "model/model.safetensors",
+      "bytes": 2450344112,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/model.safetensors",
+      "sha256": "730839316de585f4c8298ec0e1712efc10fb19c6fa4e36eb741cb8d51ebcf6aa"
+    },
+    {
+      "path": "model/tokenizer.json",
+      "bytes": 11423986,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/tokenizer.json",
+      "sha256": "408f669b7e2b045fdf54201d815bd364e6667dbd845115da81239c40bc6dcfd1"
+    },
+    {
+      "path": "model/tokenizer_config.json",
+      "bytes": 533,
+      "access": "public",
+      "url": "https://huggingface.co/k2-fsa/OmniVoice/resolve/c5fdb5ccb189668d56333f77ba2629f4cd7535f4/tokenizer_config.json",
+      "git_blob_sha1": "a7fb6f8558cce2a23d4cbb186a4a740bd2d9d481"
+    }
+  ]
+}

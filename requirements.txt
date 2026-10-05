@@ -1,0 +1,9 @@
+# Install in a dedicated Python 3.12 environment; choose CPU/CUDA wheels explicitly.
+torch==2.8.0
+torchaudio==2.8.0
+transformers==5.3.0
+accelerate==1.10.1
+numpy==2.2.6
+soundfile==0.13.1
+librosa==0.11.0
+omnivoice @ git+https://github.com/k2-fsa/OmniVoice.git@08be0b4ccbac3e13e374e86fbfead4b4cac343e2

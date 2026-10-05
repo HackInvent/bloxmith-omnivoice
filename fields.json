@@ -1,0 +1,319 @@
+[
+  {
+    "key": "asset_directory",
+    "type": "directory",
+    "label": "Model and codec directory",
+    "help": "Prepare the pinned 3.27 GB snapshot first. Runtime verifies local files and never downloads."
+  },
+  {
+    "key": "environment_python",
+    "type": "file",
+    "label": "Inference Python",
+    "help": "Dedicated Python 3.12 with pinned OmniVoice dependencies. Empty uses the app interpreter only if compatible."
+  },
+  {
+    "key": "voice_mode",
+    "type": "select",
+    "label": "Voice mode",
+    "help": "Automatic voice, supported voice attributes, or an authorized reference plus its transcript.",
+    "options": [
+      "auto",
+      "design",
+      "clone"
+    ]
+  },
+  {
+    "key": "language",
+    "type": "language",
+    "label": "Language code",
+    "help": "Auto, or search an official language code/name. Language names shown in the list are upstream data; quality is model-dependent."
+  },
+  {
+    "key": "voice_instruction",
+    "type": "textarea",
+    "label": "Voice attributes",
+    "help": "Comma-separated: female, young adult, low pitch, british accent, whisper. One value per category. See README for all attributes.",
+    "rows": 3,
+    "when": {
+      "voice_mode": [
+        "design"
+      ]
+    }
+  },
+  {
+    "key": "reference_audio",
+    "type": "file",
+    "label": "Voice reference",
+    "help": "Authorized, completed local audio, 0.5–20 seconds, at most 32 MiB. 3–10 seconds recommended. Source is preserved.",
+    "when": {
+      "voice_mode": [
+        "clone"
+      ]
+    }
+  },
+  {
+    "key": "reference_text",
+    "type": "textarea",
+    "label": "Reference transcript",
+    "help": "Required exact words of the reference recording. No automatic Whisper model or hidden STT download.",
+    "rows": 4,
+    "when": {
+      "voice_mode": [
+        "clone"
+      ]
+    }
+  },
+  {
+    "key": "device",
+    "type": "select",
+    "label": "Inference device",
+    "help": "Explicit CPU or CUDA device 0. No silent device fallback; weights reload per request.",
+    "options": [
+      "cpu",
+      "cuda:0"
+    ]
+  },
+  {
+    "key": "precision",
+    "type": "select",
+    "label": "Model precision",
+    "help": "CPU requires float32. CUDA also accepts float16/bfloat16. The codec stays float32.",
+    "options": [
+      "float32",
+      "float16",
+      "bfloat16"
+    ]
+  },
+  {
+    "key": "format",
+    "type": "select",
+    "label": "Completed file format",
+    "help": "Complete mono WAV at 24 kHz or Ogg/Opus at 48 kHz. This is not a live audio-stream port.",
+    "options": [
+      "ogg_opus",
+      "wav"
+    ]
+  },
+  {
+    "key": "output_directory",
+    "type": "directory",
+    "label": "Completed audio directory",
+    "help": "Empty uses this node’s persistent audio directory. Unique names, no overwrites or automatic deletion.",
+    "advanced": true
+  },
+  {
+    "key": "target_duration_sec",
+    "type": "number",
+    "label": "Target duration (seconds; 0 = automatic)",
+    "help": "Native duration in 40 ms frames. Overrides speed. Padding counts toward the maximum; post-processing can shorten it.",
+    "min": 0,
+    "max": 90,
+    "advanced": true
+  },
+  {
+    "key": "speed",
+    "type": "number",
+    "label": "Speaking speed",
+    "help": "Native factor: above 1 speaks faster. Ignored when target duration is set.",
+    "min": 0.5,
+    "max": 2,
+    "advanced": true
+  },
+  {
+    "key": "num_step",
+    "type": "integer",
+    "label": "Diffusion steps",
+    "help": "32 by default; 16 is faster. Every scheduled step and every audio code must complete.",
+    "min": 1,
+    "max": 64,
+    "advanced": true
+  },
+  {
+    "key": "guidance_scale",
+    "type": "number",
+    "label": "Guidance scale",
+    "help": "Native classifier-free guidance strength; default 2.",
+    "min": 0,
+    "max": 8,
+    "advanced": true
+  },
+  {
+    "key": "t_shift",
+    "type": "number",
+    "label": "Time-step shift",
+    "help": "Native diffusion schedule shift; default 0.1.",
+    "min": 0.01,
+    "max": 1,
+    "advanced": true
+  },
+  {
+    "key": "position_temperature",
+    "type": "number",
+    "label": "Position temperature",
+    "help": "Native mask-position sampling; 0 is greedy, default 5.",
+    "min": 0,
+    "max": 10,
+    "advanced": true
+  },
+  {
+    "key": "class_temperature",
+    "type": "number",
+    "label": "Audio-code temperature",
+    "help": "Native token sampling; 0 is greedy.",
+    "min": 0,
+    "max": 2,
+    "advanced": true
+  },
+  {
+    "key": "layer_penalty_factor",
+    "type": "number",
+    "label": "Codebook-layer penalty",
+    "help": "Encourage earlier codebook layers to unmask first; default 5.",
+    "min": 0,
+    "max": 10,
+    "advanced": true
+  },
+  {
+    "key": "pad_duration",
+    "type": "number",
+    "label": "Padding per side (seconds)",
+    "help": "Silence added at each end; included in the maximum output duration.",
+    "min": 0,
+    "max": 0.5,
+    "advanced": true
+  },
+  {
+    "key": "fade_duration",
+    "type": "number",
+    "label": "Fade per side (seconds)",
+    "help": "Native fade-in/fade-out duration.",
+    "min": 0,
+    "max": 0.5,
+    "advanced": true
+  },
+  {
+    "key": "audio_chunk_duration",
+    "type": "number",
+    "label": "Target chunk duration (seconds)",
+    "help": "Native punctuation-based chunking. Must not exceed the chunk threshold.",
+    "min": 3,
+    "max": 30,
+    "advanced": true
+  },
+  {
+    "key": "audio_chunk_threshold",
+    "type": "number",
+    "label": "Chunking threshold (seconds)",
+    "help": "Above this estimated duration, use all native chunks in order.",
+    "min": 3,
+    "max": 30,
+    "advanced": true
+  },
+  {
+    "key": "threads",
+    "type": "integer",
+    "label": "CPU threads",
+    "help": "Bound native CPU parallelism.",
+    "min": 1,
+    "max": 16,
+    "advanced": true
+  },
+  {
+    "key": "max_audio_sec",
+    "type": "integer",
+    "label": "Maximum audio duration (seconds)",
+    "help": "Reject overlong estimates/chunks/results. Never silently crop speech.",
+    "min": 1,
+    "max": 90,
+    "advanced": true
+  },
+  {
+    "key": "max_segments",
+    "type": "integer",
+    "label": "Maximum segments",
+    "help": "Refuse extra segments before generating them. All planned segments must be present.",
+    "min": 1,
+    "max": 16,
+    "advanced": true
+  },
+  {
+    "key": "max_context_tokens",
+    "type": "integer",
+    "label": "Maximum context tokens",
+    "help": "Bounds native attention allocation before each diffusion batch.",
+    "min": 512,
+    "max": 8192,
+    "advanced": true
+  },
+  {
+    "key": "max_text_chars",
+    "type": "integer",
+    "label": "Maximum text characters",
+    "help": "Reject oversized input. Inline pronunciation and non-verbal tags stay native.",
+    "min": 1,
+    "max": 2000,
+    "advanced": true
+  },
+  {
+    "key": "timeout_sec",
+    "type": "integer",
+    "label": "Whole-request deadline (seconds)",
+    "help": "Verification, loading, inference, encoding and publication share this deadline.",
+    "min": 1,
+    "max": 240,
+    "advanced": true
+  },
+  {
+    "key": "memory_limit_mib",
+    "type": "integer",
+    "label": "Address-space limit (MiB)",
+    "help": "0 disables the ceiling, otherwise at least 4096 MiB. CUDA reserves large virtual ranges; this is not reserved RAM.",
+    "min": 0,
+    "max": 262144,
+    "advanced": true
+  },
+  {
+    "key": "min_available_ram_mib",
+    "type": "integer",
+    "label": "Required available RAM (MiB)",
+    "help": "Default 8 GiB; weight-based CPU/VRAM checks also apply. No memory reservation.",
+    "min": 4096,
+    "max": 262144,
+    "advanced": true
+  },
+  {
+    "key": "max_pending",
+    "type": "integer",
+    "label": "Pending requests",
+    "help": "Active Runtime only. 0 rejects text while busy. Interrupt clears earlier requests.",
+    "min": 0,
+    "max": 16,
+    "advanced": true
+  },
+  {
+    "key": "denoise",
+    "type": "boolean",
+    "label": "Denoise conditioning",
+    "help": "Native denoise token, not a filter on your reference file.",
+    "advanced": true
+  },
+  {
+    "key": "preprocess_prompt",
+    "type": "boolean",
+    "label": "Preprocess reference",
+    "help": "Native removal of long silence and punctuation completion, on the private reference copy only.",
+    "advanced": true,
+    "when": {
+      "voice_mode": [
+        "clone"
+      ]
+    }
+  },
+  {
+    "key": "postprocess_output",
+    "type": "boolean",
+    "label": "Post-process output",
+    "help": "Native removal of long silences; may shorten the target duration. Fades and padding remain separate.",
+    "advanced": true
+  }
+]
